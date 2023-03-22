@@ -1,0 +1,11 @@
+{
+    "message": {
+        "id" : "123456789",
+        "text" : "Hello, world",
+        "timestamp": 1646547600000,
+        "sender": {
+            "id": "user123",
+            "name": "Mushkan Singh"
+        }
+    }
+}

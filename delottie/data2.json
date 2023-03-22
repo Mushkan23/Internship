@@ -1,0 +1,8 @@
+{
+    "message_id": "123456789",
+    "message_text": "Hello, world",
+    "message_timestamp": "2022-03-04T14:02:43.000Z",
+    "sender_id": "user123",
+    "sender_name": "mushkan singh",
+    "confidence_score": 0.95
+}
