@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pop-up bot</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+        <div class="chat-box">
+            <button id="chat-button" onclick="openChatWindow()">    <!--- --changing div into button-->
+                <h3>Message Us</h3></button>
+                <p><i class="fa fa-times"></i></p>
+            </div>
+            <div class="chat-box-body">
+                <div id="chat-box-body-send">
+                    <p>This is my message.</p>
+                    <span>12:00</span>
+                </div>
+            <div id="chat-box-body-receive">
+                <p>This is my message.</p>
+                <span class="span">12:00</span>
+            </div>
+            <div id="chat-box-body-receive">
+                <p>This is my message.</p>
+                <span>12:00</span>
+            </div>
+        <!--<div id="chat-box-body-send">
+            <p>This is my message.</p>
+            <span>12:00</span>
+        </div>
+        <div id="chat-box-body-send">
+            <p>This is my message.</p>
+            <span>12:00</span>
+        </div>-
+    </div>
+    <div class="chat-box-footer">
+        <button id="addExtra"><i class="fa fa-plus"></i></button>
+        <input placeholder="Enter Your Message" type="text" />
+        <i class="send far fa-paper-plane"></i>
+    </div>
+</div>--->
+<div id="chat-button"><span></span></div>
+<div class="modal">
+    <div class="modal-content">
+        <span class="modal-close-button">&times;</span>
+        <h1>Add What you want here.</h1>
+    </div>
+</div>
+
+ <!---- <button id="chat-button" onclick="openChatWindow()">Chat with Us</button>
+    <div id="chat-window">
+        <div id="chat-log"></div>
+        <input type="text" id="chat-input" placeholder="Type your message here....">
+    </div>---->
+
+    <script src="script.js"></script>
+    <script src="brain.js"></script>
+</body>
+</html>
