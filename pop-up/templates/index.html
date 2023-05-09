@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pop-up bot</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Chatbot</h1>
+            <div class="chat-close" onclick="toggleChat()">&times;</div>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-message bot-message">
+                <p>Hi! How canI help you?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <form action="" onsubmit="sendMessage(); return flase;">
+                <input type="text" name="" id="user-message" placeholder="Type your message...">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="chat-button" onclick="toggleChat()">&#x1f4ac</div>
+
+    <script>  
+        function toggleChat()
+        {
+            var chatContainer = document.querySelector(".chat-container");       //might error occur becoz of .
+            chatContainer.classList.toggle("chat-container-active");
+        }
+        
+        function sendMessage()
+        {
+            var userMessage = document.getElementById("user-message").value;
+            addMessage(userMessage, "user-message");
+            document.getElementById("user-message").value = "";
+            fetch("/get_response", {
+                method: "POST",
+                body: JSON.stringify({user_message: userMessage}),
+                headers: {
+                    "content-type" : "application/json"
+                }
+            })
+                .then (function(response)
+                {
+                    return response.json();
+                })
+                .then (function(data)
+                {
+                    var botMessage = data.bot_message;
+                    addMessage(botMessage, 'bot-message')
+                });
+        }
+        function addMessage(message, type)
+        {
+            var chatMessages = document.getElementById('chat-messages');
+            var chatMessage = document.createElement('div');
+            chatMessage.classList.add("chat-messages");
+            chatMessage.classList.add(type);
+            chatMessage.innerHTML = "<p>" + message + "</p>";
+            chatMessage.appendChild(chatMessages);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        }
+    
+    </script>
+        <!---<div class="chat-box">
+            <div class="chat-button">  --<button id="chat-button" onclick="openChatWindow()">   --- --changing div into button--
+zz                <p><i class="fa fa-times"></i></p>
+            </div>
+
+            <div class="chat-box-body">
+                <div id="chat-box-body-send">
+                    <p>This is my message.</p>
+                    <span>12:00</span>
+                </div>
+                <div id="chat-box-body-receive">
+                    <p>This is my message.</p>
+                    <span class="span">12:00</span>
+                </div>
+                <div id="chat-box-body-receive">
+                    <p>This is my message.</p>
+                    <span>12:00</span>
+                </div>
+            </div>
+        </div>
+        
+<div id="chat-button"><span></span></div>
+<div class="modal">
+    <div class="modal-content">
+        <span class="modal-close-button">&times;</span>
+        <h1>Add What you want here.</h1>
+    </div>
+</div>
+</div>
+    <script src="script.js"></script>
+    <script src="brain.js"></script>  ---->
+</body>
+</html>
